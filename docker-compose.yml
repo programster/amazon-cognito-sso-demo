@@ -9,7 +9,7 @@ services:
         image: slim-sso-demo
         restart: always
         ports:
-            - "80:80"
+            - "8000:80"
         environment:
             - SITE_NAME=site1
             - AWS_REGION=${AWS_REGION}
@@ -27,7 +27,7 @@ services:
         image: slim-sso-demo
         restart: always
         ports:
-            - "80:80"
+            - "8080:80"
         environment:
             - SITE_NAME=site2
             - AWS_REGION=${AWS_REGION}
