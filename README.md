@@ -1,7 +1,7 @@
 Amazon Cognito SSO Demo
 =======================
 
-This is a demonstration of integrating a PHP-based web service with Amazon Cognito for an OIDC SSO.
+This is a demonstration of integrating a PHP-based web service with Amazon Cognito for an OIDC SSO. This demo relates to [my Cognito tutorials](https://blog.programster.org/tag/Cognito).
 
 
 ## TODO
