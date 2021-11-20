@@ -1,0 +1,13 @@
+{
+    "require": {
+        "aws/aws-sdk-php": "^3.202",
+        "slim/slim": "^4.9",
+        "programster/abstract-view": "^1.1",
+        "slim/psr7": "^1.5",
+        "symfony/dotenv": "^5.3",
+        "irap/autoloader": "1.*",
+        "programster/core-libs": "^2.1",
+        "psr/http-client": "^1.0",
+        "guzzlehttp/guzzle": "^7.4"
+    }
+}

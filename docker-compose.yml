@@ -1,0 +1,41 @@
+version: "3.9"
+
+services:
+    site1:
+        build:
+            context: .
+            dockerfile: ./docker/Dockerfile
+        container_name: site1
+        image: slim-sso-demo
+        restart: always
+        ports:
+            - "80:80"
+        environment:
+            - SITE_NAME=site1
+            - AWS_REGION=${AWS_REGION}
+            - AWS_KEY_ID=${AWS_KEY_ID}
+            - AWS_KEY_SECRET=${AWS_KEY_SECRET}
+            - COGNITO_HOSTED_UI_URL=${COGNITO_HOSTED_UI_URL}
+            - COGNITO_CLIENT_ID=${COGNITO_CLIENT_ID}
+            - COGNITO_CLIENT_SECRET=${COGNITO_CLIENT_SECRET}
+
+    site2:
+        build:
+            context: .
+            dockerfile: ./docker/Dockerfile
+        container_name: site2
+        image: slim-sso-demo
+        restart: always
+        ports:
+            - "80:80"
+        environment:
+            - SITE_NAME=site2
+            - AWS_REGION=${AWS_REGION}
+            - AWS_KEY_ID=${AWS_KEY_ID}
+            - AWS_KEY_SECRET=${AWS_KEY_SECRET}
+            - COGNITO_HOSTED_UI_URL=${COGNITO_HOSTED_UI_URL}
+            - COGNITO_CLIENT_ID=${COGNITO_CLIENT_ID}
+            - COGNITO_CLIENT_SECRET=${COGNITO_CLIENT_SECRET}
+
+
+
