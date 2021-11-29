@@ -9,7 +9,7 @@ services:
         image: slim-sso-demo
         restart: always
         ports:
-            - "80:80"
+            - "8080:80"
         volumes:
             - ./site:/var/www/site
         environment:
@@ -20,5 +20,4 @@ services:
             - COGNITO_HOSTED_UI_URL=${COGNITO_HOSTED_UI_URL}
             - COGNITO_CLIENT_ID=${COGNITO_CLIENT_ID}
             - COGNITO_CLIENT_SECRET=${COGNITO_CLIENT_SECRET}
-
 
