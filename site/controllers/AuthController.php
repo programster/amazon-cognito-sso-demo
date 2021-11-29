@@ -23,7 +23,14 @@ class AuthController extends AbstractSlimController
         });
 
 
-        // handle a user requesting to log out
+        // handle a user requesting to log out of everything
+        $app->get('/logout-everything', function (Psr\Http\Message\ServerRequestInterface $request, Psr\Http\Message\ResponseInterface $response, $args) {
+            $controller = new AuthController($request, $response, $args);
+            return $controller->handleUserLogoutOfEverythingRequest();
+        })->add(new MiddlewareCheckLoggedIn());
+
+
+        // handle a user requesting to log out of just this service
         $app->get('/logout', function (Psr\Http\Message\ServerRequestInterface $request, Psr\Http\Message\ResponseInterface $response, $args) {
             $controller = new AuthController($request, $response, $args);
             return $controller->handleUserLogoutRequest();
@@ -218,7 +225,7 @@ class AuthController extends AbstractSlimController
     /**
      * Handle a user requesting to logout, by navigating to the logout page.
      */
-    private function handleUserLogoutRequest() : \Psr\Http\Message\ResponseInterface
+    private function handleUserLogoutOfEverythingRequest() : \Psr\Http\Message\ResponseInterface
     {
         // Revoke the refresh token and all tokens associated with it.
         $url = COGNITO_HOSTED_UI_URL . "/oauth2/revoke";
@@ -254,6 +261,18 @@ class AuthController extends AbstractSlimController
 
         $logoutUrl = COGNITO_HOSTED_UI_URL . "/logout?" . http_build_query($logoutParameters);
         return SlimLib::createRedirectResponse($logoutUrl);
+    }
+
+
+    /**
+     * Handle a user requesting to logout, by navigating to the logout page.
+     */
+    private function handleUserLogoutRequest() : \Psr\Http\Message\ResponseInterface
+    {
+        // remove the user from the session, making them not logged in on this site.
+        SiteSpecific::removeLoggedInUser();
+
+        return SlimLib::createRedirectResponse("/");
     }
 
 

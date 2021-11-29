@@ -34,7 +34,9 @@ class ViewLoggedInDashboard extends \Programster\AbstractView\AbstractView
 
     <p>Congratulations! You're logged in as <?= $this->m_loggedInUserEmail; ?>. This page represents the dashboard that only logged in users can access.</p>
 
-    <p><a href="/logout">Click here</a> to logout.</p>
+    <p><a href="/logout">Logout of just this site.</a> This will log you out of just this service.</p>
+
+    <p><a href="/logout-everything">Logout of everything</a>. This will log you out of this service, and the SSO, and revoke the refresh token so that other services that use it will require you to log in as well.</p>
 
 <?php
     }
