@@ -17,8 +17,6 @@ class MiddlewareCheckLoggedIn implements \Psr\Http\Server\MiddlewareInterface
             $isLoggedIn = true;
         }
 
-        $isLoggedIn = true;
-
         if ($isLoggedIn === false)
         {
             // user is not logged in, display error page.
